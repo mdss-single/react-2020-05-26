@@ -3,6 +3,8 @@ import Menu from '../menu';
 import Reviews from '../reviews';
 import Banner from '../banner';
 import Rate from '../rate';
+import PropTypes from 'prop-types';
+
 import styles from './restaurant.module.css';
 
 const Restaurant = ({ restaurant }) => {
@@ -24,6 +26,12 @@ const Restaurant = ({ restaurant }) => {
       </div>
     </div>
   );
+};
+Restaurant.propTypes = {
+  name: PropTypes.string.isRequired,
+  averageRating: PropTypes.number.isRequired,
+  menu: PropTypes.array.isRequired,
+  reviews: PropTypes.array.isRequired,
 };
 
 export default Restaurant;

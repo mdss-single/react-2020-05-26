@@ -24,6 +24,13 @@ describe('Product', () => {
     component.find('[data-id="product-increment"]').simulate('click');
     expect(component.find('[data-id="product-amount"]').text()).toBe('1');
   });
+  it('should decrement amount', () => {
+    const component = mount(<Product product={product} />);
+    let value = component.find('[data-id="product-decrement"]').value;
+    value = 1;
+    component.find('[data-id="product-decrement"]').simulate('click');
+    expect(component.find('[data-id="product-amount"]').text()).toBe('0');
+  });
   it('should fetch data', () => {
     const fn = jest.fn();
     mount(<Product product={product} fetchData={fn} />);

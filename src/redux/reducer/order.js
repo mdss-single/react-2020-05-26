@@ -10,9 +10,10 @@ export default (state = {}, action) => {
     case INCREMENT:
       return {
         ...state,
-        [payload.id]: (state[payload.id] || 0) + 1,
-        name: payload.name,
-        price: payload.price,
+        [payload.id]: {
+          [payload.id]: (state[payload.id] || 0) + 1,
+          ...payload,
+        },
       };
     case DECREMENT:
       return {

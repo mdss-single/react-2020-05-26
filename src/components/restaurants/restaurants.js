@@ -2,14 +2,20 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Restaurant from '../restaurant';
-import RestaurantName from '../restaurant';
 import Tabs from '../tabs';
 
 const Restaurants = ({ restaurants }) => {
-  const tabs = Object.keys(restaurants).map((id) => ({
-    title: <RestaurantName id={id} />,
-    content: <Restaurant key={id} id={id} />,
+  const tabs = restaurants.map((restaurant) => ({
+    title: restaurant.name,
+    content: (
+      <Restaurant
+        key={restaurant.id}
+        restaurant={restaurant}
+        id={restaurant.id}
+      />
+    ),
   }));
+
   return <Tabs tabs={tabs} />;
 };
 

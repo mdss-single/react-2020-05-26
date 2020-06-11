@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Menu from '../menu';
 import Reviews from '../reviews';
@@ -21,7 +22,7 @@ const Restaurant = ({ restaurant }) => {
 
   return (
     <div>
-      <Banner heading={name}>
+      <Banner heading={restaurant.name}>
         <Rate value={averageRating} />
       </Banner>
       <Tabs tabs={tabs} />
@@ -41,4 +42,8 @@ Restaurant.propTypes = {
   }).isRequired,
 };
 
-export default Restaurant;
+const mapStateToProps = (state, ownProps) => ({
+  restaurant: state.restaurants[ownProps.id],
+});
+
+export default connect(mapStateToProps)(Restaurant);
